@@ -1,0 +1,418 @@
+
+                   .description {
+        font-size: 1.2em;
+        color: auto, rgba(0, 0, 0, 0.6);
+        line-height: 1.6;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            body.dark-mode {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+
+            body.dark-mode .container {
+                background-color: #1E1E1E;
+            }
+
+            body.dark-mode header img {
+                filter: brightness(0.7);
+            }
+            body.dark-mode .content-section {
+                background-color: #2C2C2C;
+            }
+            body.dark-mode nav ul {
+                background-color: #333;
+            }
+
+            body.dark-mode nav ul li a, 
+            body.dark-mode nav ul li .dropdown-btn {
+                color: auto;
+            }
+
+            body.dark-mode .footer-top {
+                background-color: #A33333;
+            }
+
+            body.dark-mode .footer-bottom {
+                background-color: #333333;
+            }
+            .theme-toggle-button:hover {
+                background-color: #ddd;
+            }
+
+            .theme-toggle-button img {
+                width: 20px;
+                height: 20px;
+            }
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                background-color: #ffffff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 20px;
+                margin-top: 20px;
+                border-radius: 8px;
+                transition: background-color 0.3s, box-shadow 0.3s;
+            }
+
+            header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            header img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+                overflow: hidden;
+                background-color: #1C1C1C;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border-radius: 0; /* Không còn viền bo tròn */
+                display: flex;
+                align-items: center;
+                justify-content: space-between; /* Tạo khoảng cách giữa các mục */
+                padding-left: 16px; /* Thêm khoảng cách chung bên trái */
+                padding-right: 16px; /* Thêm khoảng cách chung bên phải */
+            }
+
+      
+            nav ul li:first-child {
+                margin-left: 16px; /* Khoảng cách ngoài cùng bên trái */
+            }
+
+            nav ul li:last-child {
+                margin-right: 16px; /* Khoảng cách ngoài cùng bên phải */
+            }
+
+            nav ul li a, nav ul li .dropdown-btn {
+                display: block;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            nav ul li a:hover, nav ul li .dropdown-btn:hover {
+    background-color: #111;
+    color: #CD3333; /* This will change the text color to red */
+}
+
+            nav ul li .dropdown {
+                position: relative;
+            }
+
+            nav ul li .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #1C1C1C;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            nav ul li .dropdown-content a {
+    color: white; /* Chữ màu xanh */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border: 1px solid transparent;
+}
+
+nav ul li .dropdown-content a:hover {
+    background-color: #CD3333; /* Nền màu trắng khi hover */
+    color: white; /* Chữ vẫn màu xanh khi hover */
+}
+            nav ul li:hover .dropdown-content {
+                display: block;
+            }
+
+            .nav-icon {
+                margin-right: 8px;
+                width: 20px;
+                height: auto;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+           .search-container {
+    position: relative;  /* Đảm bảo không bị lỗi bố cục */
+    padding: 8px;
+    margin-bottom: 20px;  /* Khoảng cách giữa thanh tìm kiếm và kết quả */
+    width: 100%;  /* Đảm bảo thanh tìm kiếm không bị lệch */
+}
+
+
+            .search-container input[type="text"] {
+                padding: 8px;
+                width: 200px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            .search-container button {
+                padding: 8px 10px;
+                background-color: #1C1C1C;
+                color: white;
+                border: 1px solid #f4f4f4;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .search-container button:hover {
+                background-color: #111;
+            }
+                       /* Cập nhật kiểu dáng cho .search-container để giữ vị trí tìm kiếm hợp lý */
+.search-container {
+    position: relative;
+    padding: 8px;
+    margin-bottom: 20px; /* Thêm khoảng cách dưới thanh tìm kiếm */
+}
+
+#search-results {
+    margin-top: 20px; /* Thêm khoảng cách giữa tiêu đề và kết quả tìm kiếm */
+    padding: 10px;
+    background-color: #f9f9f9; /* Màu nền cho kết quả tìm kiếm */
+    width: 100%; /* Đảm bảo kết quả tìm kiếm có chiều rộng bằng 100% */
+    box-sizing: border-box; /* Đảm bảo padding không làm rộng quá */
+}
+
+#search-results div {
+    padding: 5px 0;
+}
+
+#search-results a {
+    color: #CD3333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#search-results a:hover {
+    text-decoration: underline;
+}
+
+
+
+            h2 {
+                color: auto;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            ul li {
+                margin: 10px 0;
+            }
+
+            a.download-button {
+                display: inline-block;
+                padding: 10px 15px;
+                background-color: #1C1C1C;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-right: 5px;
+            }
+
+            a.download-button:hover {
+                background-color:#000;
+            }
+
+            .footer-top {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                background-color: #CD3333;
+                color: white;
+                padding: 6px;
+                margin: 0 auto; 
+            }
+
+            .footer-top a {
+                color: white;
+                text-decoration: none;
+                margin-left: 15px;
+            }
+
+            .footer-bottom {
+                background-color: #1C1C1C;
+                color: white;
+                text-align: left;
+                padding: 10px;
+                margin: 0 auto; 
+            }
+            .footer-link {
+    color: white;
+    text-decoration: none; /* Nếu muốn bỏ gạch chân */
+}
+
+.footer-link:hover {
+    color: lightgray; /* Thêm hiệu ứng khi hover nếu cần */
+}
+
+
+            .theme-toggle-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f4f4f4;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                box-shadow: none;
+            }
+
+            .theme-toggle-button:hover {
+                background-color: #ddd;
+            }
+
+            .theme-toggle-button img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .document-sections {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+
+    .document-category {
+        width: 30%;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .document-category h3 {
+        color: #CD3333;
+        border-bottom: 2px solid #CD3333;
+        padding-bottom: 5px;
+    }
+
+    .document-category ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .document-category ul li {
+        margin: 10px 0;
+    }
+
+    .document-category ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .document-category ul li p {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .document-preview {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .download-link {
+        display: block;
+        color: #CD3333;
+        margin-bottom: 10px;
+        text-decoration: underline;
+    }
+
+    .download-button {
+        padding: 10px 20px;
+        background-color: #CD3333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .download-button:hover {
+        background-color: #b22222;
+    }      
+    .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #CD3333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #b22222;
+}
+
+form p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+form a {
+    color: #CD3333;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
