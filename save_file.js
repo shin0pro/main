@@ -8,7 +8,7 @@ const octokit = new Octokit({
   auth: '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',
 });
 
-app.post('/upload', upload.single('image'), async (req, res) => {
+app.post('/uploads', upload.single('image'), async (req, res) => {
   const { buffer, originalname } = req.file;
 
   try {
