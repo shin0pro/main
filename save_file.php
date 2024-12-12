@@ -31,7 +31,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 <br><br>
-<a href="http://localhost:8080/test/upload.html">Quay lại</a>
+<a href="upload.html">Quay lại</a>
 </head>
 
 <!DOCTYPE html>
