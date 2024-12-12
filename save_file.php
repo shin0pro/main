@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
 const express = require('express');
 const multer = require('multer');
 const { Octokit } = require('@octokit/rest');
@@ -30,9 +26,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     res.status(500).send('Error uploading image');
   }
 });
-<br><br>
-<a href="upload.html">Quay lại</a>
-</head>
 
 <!DOCTYPE html>
 <html lang="vi">
