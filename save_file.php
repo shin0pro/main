@@ -2,52 +2,34 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-<?php
-if (isset($_POST['submit'])) {
-    // Đường dẫn đến thư mục lưu trữ tệp tải lên
-    $targetDir = __DIR__ . "/uploads/";  // Sử dụng __DIR__ để chỉ thư mục hiện tại
+const express = require('express');
+const multer = require('multer');
+const { Octokit } = require('@octokit/rest');
 
-    // Kiểm tra và tạo thư mục nếu chưa tồn tại
-    if (!is_dir($targetDir)) {
-        mkdir($targetDir, 0777, true);
-    }
+const app = express();
+const upload = multer();
+const octokit = new Octokit({
+  auth: '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',
+});
 
-    // Đường dẫn đầy đủ của tệp tải lên
-    $targetFile = $targetDir . basename($_FILES["fileUpload"]["name"]);
-    $uploadOk = 1;
-    $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+app.post('/upload', upload.single('image'), async (req, res) => {
+  const { buffer, originalname } = req.file;
 
-    // Kiểm tra loại tệp (ví dụ: chấp nhận JPG, PNG, PDF)
-    $allowedTypes = ["jpg", "png", "pdf", "cpp", "py", "html", "php", "js", "css", "txt", "docx"];
-    if (!in_array($fileType, $allowedTypes)) {
-        echo "Chỉ cho phép các định dạng JPG, PNG, PDF.";
-        $uploadOk = 0;
-    }
+  try {
+    await octokit.rest.repos.createOrUpdateFileContents({
+      owner: 'shin0pro',
+      repo: 'main',
+      path: `uploads/${originalname}`,
+      message: 'Upload new image',
+      content: buffer.toString('base64'),
+    });
 
-    // Kiểm tra nếu tệp đã tồn tại
-    if (file_exists($targetFile)) {
-        echo "Tệp đã tồn tại.";
-        $uploadOk = 0;
-    }
-
-    // Giới hạn kích thước tệp (tối đa 500MB)
-    if ($_FILES["fileUpload"]["size"] > 500000000) {
-        echo "Dung lượng tệp vượt quá giới hạn cho phép (500MB).";
-        $uploadOk = 0;
-    }
-
-    // Tiến hành tải lên nếu không có lỗi
-    if ($uploadOk) {
-        if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $targetFile)) {
-            echo "Đã tải xong";
-        } else {
-            echo "Có lỗi xảy ra khi tải lên tệp.";
-        }
-    } else {
-        echo "Tệp không thể tải lên.";
-    }
-}
-?>
+    res.send('Image uploaded successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error uploading image');
+  }
+});
 <br><br>
 <a href="http://localhost:8080/test/upload.html">Quay lại</a>
 </head>
